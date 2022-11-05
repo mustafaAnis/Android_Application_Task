@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/homeFragment"
+    android:icon="@drawable/home_tab"
+    android:title="HOME"
+    />
+    <item
+        android:id="@+id/quranFragment"
+        android:icon="@drawable/quran_tab"
+        android:title="QURAN"
+        />
+
+    <item
+        android:id="@+id/hadeesFragment"
+        android:icon="@drawable/hadees_tab"
+        android:title="HADEES"
+        />
+
+    <item
+        android:id="@+id/ibadatFragment"
+        android:icon="@drawable/ibadat_tab"
+        android:title="IBADAT"
+        />
+
+    <item
+        android:id="@+id/moreFragment"
+        android:icon="@drawable/more_tab"
+        android:title="MORE"
+        />
+
+</menu>
