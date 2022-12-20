@@ -1,8 +1,10 @@
 package com.example.androidapplicationtask
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -23,5 +25,8 @@ private lateinit var navController: NavController
         navController= Navigation.findNavController(this,R.id.activity_main_nav_host_fragment)
         setupWithNavController(binding.bottomNavigationView,navController)
 
+
+        }
+
+
     }
-}

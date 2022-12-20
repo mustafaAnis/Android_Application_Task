@@ -13,15 +13,26 @@
         android:theme="@style/Theme.AndroidApplicationTask"
         tools:targetApi="31">
         <activity
+            android:name=".quran"
+            android:exported="false"
+            android:label="@string/quran"
+
+            android:theme="@style/Theme.quran"
+            >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.Splash"
-            >
+            android:theme="@style/Theme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -29,7 +40,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
