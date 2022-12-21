@@ -15,7 +15,15 @@ class QuranFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quran, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_quran, container, false)
+
+        view.findViewById<Button>(R.id.btnQuran).setOnClickListener{
+            val intent = Intent(context,quran::class.java)
+            startActivity(intent)
+        }
+
+        return view
 
     }
 
