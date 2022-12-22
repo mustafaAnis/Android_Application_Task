@@ -19,7 +19,7 @@ class QuranFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_quran, container, false)
 
         view.findViewById<Button>(R.id.btnQuran).setOnClickListener{
-            val intent = Intent(context,quran::class.java)
+            val intent = Intent(context,SurahView::class.java)
             startActivity(intent)
         }
 

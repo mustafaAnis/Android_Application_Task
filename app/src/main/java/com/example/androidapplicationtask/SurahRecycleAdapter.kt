@@ -1,6 +1,7 @@
 package com.example.androidapplicationtask
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -8,16 +9,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import kotlin.math.log
 
-class MyAdapter(val surah: List<Surah>) : Adapter<MyAdapter.MyViewHolder>() {   //some changes happen here if any error comes then check here
+class SurahRecycleAdapter(val surah: List<Surah>, val context : Context ) : Adapter<SurahRecycleAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_view, parent, false)
+        val view = inflater.inflate(R.layout.surah_item_view, parent, false)
         return MyViewHolder(view)
     }
 
@@ -27,6 +26,14 @@ class MyAdapter(val surah: List<Surah>) : Adapter<MyAdapter.MyViewHolder>() {   
         holder.surahName.text = surah[position].surahName
         holder.ayatNo.text = "Ayaat :" + surah[position].totalAyat.toString()
         holder.surahCard.setOnClickListener(){
+            
+            if(position == 0){
+            val intent = Intent(context,AyaatList::class.java)
+            context.startActivity(intent)
+            }
+            else{
+                Toast.makeText(context, "No Data Available ", Toast.LENGTH_SHORT).show()
+            }
 
         }
     }

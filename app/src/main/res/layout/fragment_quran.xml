@@ -13,8 +13,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
         android:text="Al-Quran"
-        android:textSize="30sp"
+        android:textSize="40sp"
+        android:paddingHorizontal="40dp"
         android:id="@+id/btnQuran"
+        android:textStyle="bold"
         />
 
 </LinearLayout>
