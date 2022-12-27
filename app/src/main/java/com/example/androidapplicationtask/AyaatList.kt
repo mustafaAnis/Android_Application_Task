@@ -14,9 +14,12 @@ class AyaatList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ayaat_list)
 
-        database = Room.databaseBuilder(applicationContext,quranDb::class.java,"quranDb.db").createFromAsset("quranDb.db").build()
+        database = Room.databaseBuilder(applicationContext,quranDb::class.java,"quranDb.db").build()
 
-        val a = database.qurandao().getAyat()
+        GlobalScope.launch {
+            database.qurandao().insertAyat(tbl_QuranComplete(7,1,2,3,"3","4",0))
+
+        }
     }
 
 
