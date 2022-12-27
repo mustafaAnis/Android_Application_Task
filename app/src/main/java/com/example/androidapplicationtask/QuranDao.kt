@@ -5,12 +5,13 @@ import androidx.room.*
 @Dao
 interface QuranDao {
 
+    @Insert
+    suspend fun insertAyat(ayaatData: tbl_QuranComplete)
 
-    suspend fun insertAyat(ayaatData: AyaatData)
-
-    suspend fun updateAyat()
+    @Update
+    suspend fun updateAyat(ayaatData: tbl_QuranComplete)
 
     @Query("select * from tbl_QuranComplete")
-    fun getAyat():LiveData< List<AyaatData> >
+    fun getAyat(): List<tbl_QuranComplete>
 
 }

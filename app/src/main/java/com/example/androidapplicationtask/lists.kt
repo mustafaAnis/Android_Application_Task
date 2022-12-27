@@ -10,9 +10,9 @@ object lists {
 
 }
 
-    fun getAyatList(): MutableList<AyaatData> {
+    fun getAyatList(): MutableList<tbl_QuranComplete> {
 
-        val ayatList = mutableListOf<AyaatData>()
+        val ayatList = mutableListOf<tbl_QuranComplete>()
 
         return ayatList
 

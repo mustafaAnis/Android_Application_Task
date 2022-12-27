@@ -1,15 +1,16 @@
 package com.example.androidapplicationtask
 
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "tbl_QuranComplete")
-data class AyaatData(
+data class tbl_QuranComplete(
     @PrimaryKey(autoGenerate = true)
     val id:Int,
-     val surahNo: Int,
-     val ayatNo: Int,
-     val paraId: Int,
-     val translation: String ,
+     val surat_id: Int,
+     val para_id: Int,
+     val ayat_number: Int,
+     val translation_urdu: String?,
      val arabic:String,
-     val isBookmarked : Int)
+     val is_Bookmarked : Int?)
