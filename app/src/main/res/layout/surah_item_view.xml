@@ -21,7 +21,7 @@
         android:id="@+id/surahNo"
         android:text="1"
         style="@style/TextAppearance.AppCompat.Headline"
-        android:paddingRight="5dp"
+        android:paddingHorizontal="5dp"
         android:layout_gravity="center_vertical"
         />
 <LinearLayout

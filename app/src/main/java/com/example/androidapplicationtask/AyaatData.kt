@@ -1,3 +1,15 @@
 package com.example.androidapplicationtask
 
-data class AyaatData(val id:Int,val surahNo: Int,val ayatNo: Int,val arabic:String,val translation: String ,val isBookmarked : Int)
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "tbl_QuranComplete")
+data class AyaatData(
+    @PrimaryKey(autoGenerate = true)
+    val id:Int,
+     val surahNo: Int,
+     val ayatNo: Int,
+     val paraId: Int,
+     val translation: String ,
+     val arabic:String,
+     val isBookmarked : Int)

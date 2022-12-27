@@ -1,13 +1,16 @@
 package com.example.androidapplicationtask
-
-import androidx.room.Dao
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface QuranDao {
 
 
-    fun updateAyat()
+    suspend fun insertAyat(ayaatData: AyaatData)
 
-    fun getAyat(ayatData: AyaatData)
+    suspend fun updateAyat()
+
+    @Query("select * from tbl_QuranComplete")
+    fun getAyat():LiveData< List<AyaatData> >
 
 }
