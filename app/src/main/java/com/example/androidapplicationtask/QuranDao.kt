@@ -6,12 +6,13 @@ import androidx.room.*
 interface QuranDao {
 
     @Insert
-    suspend fun insertAyat(ayaatData: tbl_QuranComplete)
+    suspend fun insertAyat(ayaatData: AyaatData)
 
-    @Update
-    suspend fun updateAyat(ayaatData: tbl_QuranComplete)
+    @Query("update tbl_QuranComplete set is_Bookmarked = :bookmark where id = :id")
+    suspend fun updateAyat(bookmark : Int,id: Int)
 
-    @Query("select * from tbl_QuranComplete")
-    fun getAyat(): List<tbl_QuranComplete>
+
+    @Query("select * from tbl_QuranComplete;")
+    suspend fun getAyat(): List<AyaatData>
 
 }

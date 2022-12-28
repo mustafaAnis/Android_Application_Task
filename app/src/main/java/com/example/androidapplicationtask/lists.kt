@@ -4,15 +4,15 @@ object lists {
 
     fun getSurahList(): MutableList<Surah> {
 
-    val surahlist = mutableListOf<Surah>()
+        val surahlist = mutableListOf<Surah>()
 
         return surahlist
 
 }
 
-    fun getAyatList(): MutableList<tbl_QuranComplete> {
+    fun getAyatList(): MutableList<AyaatData> {
 
-        val ayatList = mutableListOf<tbl_QuranComplete>()
+        val ayatList = mutableListOf<AyaatData>()
 
         return ayatList
 
