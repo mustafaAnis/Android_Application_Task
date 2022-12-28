@@ -4,7 +4,7 @@ object lists {
 
     fun getSurahList(): MutableList<Surah> {
 
-    val surahlist = mutableListOf<Surah>()
+        val surahlist = mutableListOf<Surah>()
 
         return surahlist
 
