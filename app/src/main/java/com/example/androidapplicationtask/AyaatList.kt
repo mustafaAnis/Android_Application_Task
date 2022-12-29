@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 
 class AyaatList : AppCompatActivity() {
     lateinit var database: quranDb
+    val ayatObject = lists.getAyatList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ayaat_list)
@@ -21,17 +22,17 @@ class AyaatList : AppCompatActivity() {
         database = quranDb.getDatabase(this)
 
 
+        GlobalScope.launch {
+            ayatObject.addAll(database.qurandao().getAyat())
+        }
+
     }
 
 
 
     fun getData(view: View) {
+            Log.d("checking database", ayatObject.size.toString())
 
-        GlobalScope.launch {
-            val dataList: List<AyaatData> = database.qurandao().getAyat()
-            Log.d("checking database", dataList.size.toString())
-
-        }
 
     }
 
