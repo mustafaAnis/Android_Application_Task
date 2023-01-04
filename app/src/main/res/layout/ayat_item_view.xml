@@ -32,12 +32,14 @@
                 android:layout_height="25dp"
                 android:src="@drawable/solid_bookmark"
                 android:layout_marginLeft="5dp"
+                android:id="@+id/bookmark"
                 />
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/flash"
                 android:layout_marginLeft="5dp"
+                android:id="@+id/flashes"
                 />
             </LinearLayout>
 
@@ -56,7 +58,9 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                tools:ignore="RtlHardcoded" />
+                tools:ignore="RtlHardcoded"
+                android:id="@+id/surahAyatNo"
+                />
                 </LinearLayout>
 
         </LinearLayout>
@@ -68,6 +72,7 @@
             android:textColor="#FF4CAF50"
             android:textAlignment="textEnd"
             style="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/arabic"
             />
         <TextView
             android:layout_width="match_parent"
@@ -76,6 +81,7 @@
             android:textColor="@color/black"
             style="@style/TextAppearance.AppCompat.Headline"
             android:textAlignment="textEnd"
+            android:id="@+id/translation"
             />
 
 
