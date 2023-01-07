@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Adapter
 import androidx.recyclerview.widget.RecyclerView
 
-class AyaatRecyclerAdapter(): RecyclerView.Adapter<AyaatViewHolder>() {
+class AyaatRecyclerAdapter(val ayaat: List<AyaatData>, val context: Context): RecyclerView.Adapter<AyaatViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AyaatViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.ayat_item_view, parent, false)
