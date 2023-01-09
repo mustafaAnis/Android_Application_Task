@@ -8,11 +8,13 @@ import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewTreeLifecycleOwner
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class AyaatList : AppCompatActivity() {
     lateinit var database: quranDb
@@ -29,7 +31,11 @@ class AyaatList : AppCompatActivity() {
             ayatObject.addAll(database.qurandao().getAyat())
         }
 
+
         val ayaatView = findViewById<RecyclerView>(R.id.ayaatView)
+
+        ayaatView.adapter = AyaatRecyclerAdapter(ayatObject,this)
+        ayaatView.layoutManager = LinearLayoutManager(this)
 
 
 

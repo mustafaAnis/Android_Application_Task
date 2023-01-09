@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class SurahView : AppCompatActivity() {
+    lateinit var database: quranDb
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quran)
@@ -26,6 +27,10 @@ class SurahView : AppCompatActivity() {
         val surahList = findViewById<RecyclerView>(R.id.surahList)
         surahList.adapter = SurahRecycleAdapter(surahObject,this)
         surahList.layoutManager = LinearLayoutManager(this)
+
+        database = quranDb.getDatabase(this)
+
+
 
 
     }

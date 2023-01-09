@@ -13,6 +13,6 @@ interface QuranDao {
 
 
     @Query("select * from tbl_QuranComplete;")
-    suspend fun getAyat(): List<AyaatData>
+    fun getAyat(): List<AyaatData>
 
 }
