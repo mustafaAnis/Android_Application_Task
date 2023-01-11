@@ -30,24 +30,20 @@ class AyaatRecyclerAdapter(val ayaat: List<AyaatData>, val context: Context): Re
         holder.translation.text = ayaat[position].translation_urdu.toString()
         holder.surahAyatNo.text =
             ayaat[position].surat_id.toString() + "." + ayaat[position].ayat_number.toString()
-        holder.bookmark.setOnClickListener() {
+        holder.bookmark.setOnClickListener {
             database = quranDb.getDatabase(context)
             if (ayaat[position].is_bookmarked == 0) {
+                Toast.makeText(context, "Bookmark saved", Toast.LENGTH_SHORT).show()
                 GlobalScope.launch {
                     database.qurandao().updateAyat(1, ayaat[position].id)
-                    ayaat.addAll(database.qurandao().getAyat())
-
                 }
-                Toast.makeText(context, "Bookmark saved "+ayaat[position].is_bookmarked, Toast.LENGTH_SHORT).show()
-                holder.bookmark.setImageResource(R.drawable.solid_bookmark)
 
 
             } else if(ayaat[position].is_bookmarked == 1) {
+                Toast.makeText(context, "Bookmark removed", Toast.LENGTH_SHORT).show()
                 GlobalScope.launch {
                     database.qurandao().updateAyat(0, ayaat[position].id)
                 }
-                Toast.makeText(context, "Bookmark removed "+ayaat[position].is_bookmarked, Toast.LENGTH_SHORT).show()
-                holder.bookmark.setImageResource(R.drawable.holo_bookmark)
 
             }
 
