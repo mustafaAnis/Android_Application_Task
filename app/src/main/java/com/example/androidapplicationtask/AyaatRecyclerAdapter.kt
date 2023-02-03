@@ -2,6 +2,7 @@ package com.example.androidapplicationtask
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.provider.Settings.Global
 import android.view.LayoutInflater
 import android.view.View
@@ -49,7 +50,8 @@ class AyaatRecyclerAdapter(val ayaat: List<AyaatData>, val context: Context): Re
 
         }
     holder.flashes.setOnClickListener(){
-        Toast.makeText(context, "flashes", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context,Flashes::class.java)
+        context.startActivity(intent)
     }
         if(ayaat[position].is_bookmarked == 0) {
             holder.bookmark.setImageResource(R.drawable.holo_bookmark)
