@@ -18,31 +18,21 @@ import kotlin.math.log
 
 class AyaatList : AppCompatActivity() {
     lateinit var database: quranDb
-    val ayatObject = lists.getAyatList()
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ayaat_list)
-
-        database = quranDb.getDatabase(this)
-
-
-        GlobalScope.launch {
-            ayatObject.addAll(database.qurandao().getAyat())
-        }
-
-
         val ayaatView = findViewById<RecyclerView>(R.id.ayaatView)
 
-        ayaatView.adapter = AyaatRecyclerAdapter(ayatObject,this)
-        ayaatView.layoutManager = LinearLayoutManager(this)
+        database = quranDb.getDatabase(this)
+        database.qurandao().getAyat().observe(this) {
 
 
+            ayaatView.adapter = AyaatRecyclerAdapter(it, this)
+            ayaatView.layoutManager = LinearLayoutManager(this)
 
+        }
 
     }
-
-
-
 
 }
