@@ -7,11 +7,12 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
 class Flashes : AppCompatActivity() {
 
-    private var post = mutableListOf <Post>()
+    private var post = mutableListOf<Post>()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,19 +22,19 @@ class Flashes : AppCompatActivity() {
 
 
         val flashesAPI = RetrofitHelper.getInstance().create(FlashesAPI::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(IO).launch {
 
             val result = flashesAPI.getFlashes()
             val resultBody = result.body()
-            Log.d("post",resultBody?.data?.posts.toString())
+            Log.d("post", resultBody?.data?.posts.toString())
 
-            if(resultBody != null){
+            if (resultBody != null) {
                 post.addAll(resultBody.data.posts)
 
-                withContext(Main){
-                    Log.d("post in context",post.toString())
-//                    flashesView.adapter = FlashesRecyclerAdapter(post,this@Flashes)
-//                    flashesView.layoutManager = LinearLayoutManager(this@Flashes)
+                withContext(Main) {
+                    Log.d("post in context", post.toString())
+                    flashesView.adapter = FlashesRecyclerAdapter(post, this@Flashes)
+                    flashesView.layoutManager = LinearLayoutManager(this@Flashes)
 
 
                 }
@@ -41,11 +42,6 @@ class Flashes : AppCompatActivity() {
             }
 
 
-
-
         }
-
-
-
     }
 }
