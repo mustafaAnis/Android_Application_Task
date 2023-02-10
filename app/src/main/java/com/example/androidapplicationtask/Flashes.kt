@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
@@ -39,6 +40,10 @@ class Flashes : AppCompatActivity() {
 
                 }
 
+
+            }
+            else{
+                Toast.makeText(this@Flashes, "Data not fetched yet", Toast.LENGTH_SHORT).show()
             }
 
 
