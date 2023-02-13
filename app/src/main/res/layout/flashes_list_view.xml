@@ -17,10 +17,11 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="960px"
+            android:layout_height="wrap_content"
             android:id="@+id/flashesImageView"
             android:src="@drawable/demoflash"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,8 +31,8 @@
             android:layout_margin="10dp"
             >
             <ImageView
-                android:layout_width="50px"
-                android:layout_height="50px"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/share"
                 android:layout_marginRight="10dp"
                 />

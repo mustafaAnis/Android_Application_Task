@@ -2,6 +2,7 @@ package com.example.androidapplicationtask
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -10,6 +11,14 @@ class SurahView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quran)
+
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+        val actionBar = getSupportActionBar()
+        if (actionBar != null) {
+            actionBar.setHomeAsUpIndicator(R.drawable.back_button)
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setDisplayShowTitleEnabled(false)
+        }
 
         val surahObject = lists.getSurahList()
 
@@ -33,5 +42,14 @@ class SurahView : AppCompatActivity() {
 
 
 
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
