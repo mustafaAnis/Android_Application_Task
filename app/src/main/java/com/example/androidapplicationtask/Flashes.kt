@@ -43,7 +43,6 @@ class Flashes : AppCompatActivity() {
                 post.addAll(resultBody.data.posts)
 
                 withContext(Main) {
-                    Log.d("post in context", post.toString())
                     flashesView.adapter = FlashesRecyclerAdapter(post, this@Flashes)
                     flashesView.layoutManager = LinearLayoutManager(this@Flashes)
 
