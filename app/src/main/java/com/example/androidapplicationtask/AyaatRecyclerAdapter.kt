@@ -2,22 +2,16 @@ package com.example.androidapplicationtask
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.provider.Settings.Global
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class AyaatRecyclerAdapter(
     val ayaat: List<AyaatData>,
-    val onItemClickListener: OnItemClickListener,
+    val onItemClickListenerForAyaat: OnItemClickListenerForAyaat,
     val context: Context
 ) : RecyclerView.Adapter<AyaatRecyclerAdapter.AyaatViewHolder>() {
     lateinit var database: quranDb
@@ -38,11 +32,11 @@ class AyaatRecyclerAdapter(
 
 
         holder.bookmark.setOnClickListener {
-            onItemClickListener.onClickBookmark(position, ayaat[position])
+            onItemClickListenerForAyaat.onItemClickBookmark(position, ayaat[position])
 
         }
         holder.flashes.setOnClickListener() {
-            onItemClickListener.onClickFlash()
+            onItemClickListenerForAyaat.onItemClickFlash()
         }
 
 

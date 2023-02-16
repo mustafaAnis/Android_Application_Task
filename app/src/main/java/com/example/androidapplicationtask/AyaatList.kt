@@ -4,23 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.widget.Adapter
 import android.widget.Toast
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewTreeLifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
-class AyaatList : AppCompatActivity(),OnItemClickListener {
+class AyaatList : AppCompatActivity(),OnItemClickListenerForAyaat {
     lateinit var database: quranDb
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,12 +55,12 @@ class AyaatList : AppCompatActivity(),OnItemClickListener {
         }
         return super.onOptionsItemSelected(item)
     }
-    override fun onClickFlash(){
+    override fun onItemClickFlash(){
         val intent = Intent(this,Flashes::class.java)
         this.startActivity(intent)
     }
 
-    override fun onClickBookmark(position: Int,Ayaat : AyaatData) {
+    override fun onItemClickBookmark(position: Int, Ayaat : AyaatData) {
         if (Ayaat.is_bookmarked == 0) {
             Toast.makeText(this, "Bookmark saved", Toast.LENGTH_SHORT).show()
             GlobalScope.launch {
