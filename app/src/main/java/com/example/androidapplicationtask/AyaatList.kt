@@ -35,8 +35,7 @@ class AyaatList : AppCompatActivity(),OnItemClickListenerForAyaat {
         ayaatView.adapter = adapter
         ayaatView.layoutManager = LinearLayoutManager(this)
 
-        database = quranDb.getDatabase(this)
-        database.qurandao().getAyat().observe(this) {
+        ApplicationClass.database.qurandao().getAyat().observe(this) {
             ayaatObject.clear()
             ayaatObject.addAll(it)
 //            val item = it.filter { it.is_bookmarked == 1 }
