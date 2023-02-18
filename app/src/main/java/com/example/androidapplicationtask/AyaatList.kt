@@ -12,7 +12,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class AyaatList : AppCompatActivity(),OnItemClickListenerForAyaat {
-    lateinit var database: quranDb
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,14 +62,14 @@ class AyaatList : AppCompatActivity(),OnItemClickListenerForAyaat {
         if (Ayaat.is_bookmarked == 0) {
             Toast.makeText(this, "Bookmark saved", Toast.LENGTH_SHORT).show()
             GlobalScope.launch {
-                database.qurandao().updateAyat(1, Ayaat.id)
+                ApplicationClass.database.qurandao().updateAyat(1, Ayaat.id)
             }
 
 
         } else {
             Toast.makeText(this, "Bookmark removed", Toast.LENGTH_SHORT).show()
             GlobalScope.launch {
-                database.qurandao().updateAyat(0, Ayaat.id)
+                ApplicationClass.database.qurandao().updateAyat(0, Ayaat.id)
             }
 
         }

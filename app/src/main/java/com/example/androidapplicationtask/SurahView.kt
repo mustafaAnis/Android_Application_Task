@@ -37,7 +37,6 @@ class SurahView : AppCompatActivity() {
         surahList.adapter = SurahRecycleAdapter(surahObject,this)
         surahList.layoutManager = LinearLayoutManager(this)
 
-        database = quranDb.getDatabase(this)
 
 
 

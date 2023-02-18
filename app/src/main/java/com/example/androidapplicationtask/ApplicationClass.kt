@@ -10,7 +10,7 @@ class ApplicationClass: Application() {
 
     companion object{
         @Volatile
-        lateinit var database : quranDb
+        var database : quranDb? = null
 
     }
 
