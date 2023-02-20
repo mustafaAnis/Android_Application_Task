@@ -3,6 +3,8 @@ package com.example.androidapplicationtask
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ApplicationClass: Application() {
 
@@ -10,7 +12,8 @@ class ApplicationClass: Application() {
 
     companion object{
         @Volatile
-        var database : quranDb? = null
+        lateinit  var database : quranDb
+        lateinit  var retrofitData : Retrofit
 
     }
 
@@ -18,17 +21,24 @@ class ApplicationClass: Application() {
 
 
     override fun onCreate() {
-        getDatabase(this)
+        val BASE_URL = "https://api.jsonserve.com"
+        setRetrofit(BASE_URL)
+        setDatabase(this)
         super.onCreate()
     }
-    fun getDatabase(context: Context):quranDb{
-        if (database == null)
-        {
+    private fun setDatabase(context: Context){
             synchronized(this){
                 database = Room.databaseBuilder(context.applicationContext,quranDb::class.java,"quranDb.db").createFromAsset("quranDb.db").build()
             }
         }
-        return database!!
+    private fun setRetrofit(url : String){
+    retrofitData = Retrofit.Builder().baseUrl(url).addConverterFactory(
+        GsonConverterFactory.create()).build()
+    }
+
+
+
+
     }
 
 
@@ -39,4 +49,3 @@ class ApplicationClass: Application() {
 
 
 
-}

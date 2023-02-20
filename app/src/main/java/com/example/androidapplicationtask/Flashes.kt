@@ -32,12 +32,11 @@ class Flashes : AppCompatActivity() {
         val flashesView = findViewById<RecyclerView>(R.id.flashesView)
 
 
-        val flashesAPI = RetrofitHelper.getInstance().create(FlashesAPI::class.java)
+        val flashesAPI = ApplicationClass.retrofitData.create(FlashesAPI::class.java)
         CoroutineScope(IO).launch {
 
             val result = flashesAPI.getFlashes()
             val resultBody = result.body()
-            Log.d("post", resultBody?.data?.posts.toString())
 
             if (resultBody != null) {
                 post.addAll(resultBody.data.posts)
