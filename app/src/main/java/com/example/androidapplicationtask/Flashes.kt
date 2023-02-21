@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Adapter
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import java.lang.Exception
 
 class Flashes : AppCompatActivity() {
-
+    lateinit var mAdapter: FlashesRecyclerAdapter
     private var post = mutableListOf<Post>()
 
     @SuppressLint("MissingInflatedId")
@@ -31,41 +33,43 @@ class Flashes : AppCompatActivity() {
 
         val flashesView = findViewById<RecyclerView>(R.id.flashesView)
 
-        val adapter = FlashesRecyclerAdapter(post, this)
-        flashesView.adapter = adapter
+        mAdapter = FlashesRecyclerAdapter(post, this)
+        flashesView.adapter = mAdapter
         flashesView.layoutManager = LinearLayoutManager(this)
 
 
-        val flashesAPI = ApplicationClass.retrofitData.create(FlashesAPI::class.java)
-        CoroutineScope(IO).launch {
-            try {
-                val result = flashesAPI.getFlashes()
-                val resultBody = result.body()
-
-
-                if (resultBody != null) {
-                    post.clear()
-                    post.addAll(resultBody.data.posts)
-                    withContext(Main) {
-                        adapter.notifyDataSetChanged()
-                    }
-                }else{
-                    withContext(Main) {
-                        Toast.makeText(this@Flashes, "Data is null", Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-
-
-            } catch (e: java.lang.Exception) {
+        CoroutineScope(Main).launch {
+            val flashes = getFlashes()
+            if (flashes.isNotEmpty()) {
+                post.clear()
+                post.addAll(flashes)
                 withContext(Main) {
-                    Toast.makeText(this@Flashes, e.toString(), Toast.LENGTH_LONG).show()
+                    mAdapter.notifyDataSetChanged()
                 }
+
+            } else {
+                Toast.makeText(this@Flashes, "Data is not available", Toast.LENGTH_SHORT).show()
             }
-
-
         }
     }
+
+    private suspend fun getFlashes(): MutableList<Post> = withContext(IO) {
+        var resultBody = mutableListOf<Post>()
+        try {
+
+
+            val result = ApplicationClass.retrofitData.create(FlashesAPI::class.java).getFlashes()
+            val resultbody = result.body()
+            if (resultbody != null) {
+                resultBody.addAll(resultbody.data.posts)
+            }
+        } catch (e: Exception) {
+
+        }
+        return@withContext resultBody
+
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -77,3 +81,4 @@ class Flashes : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
+
