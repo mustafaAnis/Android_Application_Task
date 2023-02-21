@@ -31,32 +31,42 @@ class Flashes : AppCompatActivity() {
 
         val flashesView = findViewById<RecyclerView>(R.id.flashesView)
 
+        val adapter = FlashesRecyclerAdapter(post, this)
+        flashesView.adapter = adapter
+        flashesView.layoutManager = LinearLayoutManager(this)
+
 
         val flashesAPI = ApplicationClass.retrofitData.create(FlashesAPI::class.java)
         CoroutineScope(IO).launch {
+            try {
+                val result = flashesAPI.getFlashes()
+                val resultBody = result.body()
 
-            val result = flashesAPI.getFlashes()
-            val resultBody = result.body()
 
-            if (resultBody != null) {
-                post.addAll(resultBody.data.posts)
-
-                withContext(Main) {
-                    flashesView.adapter = FlashesRecyclerAdapter(post, this@Flashes)
-                    flashesView.layoutManager = LinearLayoutManager(this@Flashes)
-
+                if (resultBody != null) {
+                    post.clear()
+                    post.addAll(resultBody.data.posts)
+                    withContext(Main) {
+                        adapter.notifyDataSetChanged()
+                    }
+                }else{
+                    withContext(Main) {
+                        Toast.makeText(this@Flashes, "Data is null", Toast.LENGTH_SHORT).show()
+                    }
 
                 }
 
 
-            }
-            else{
-                Toast.makeText(this@Flashes, "Data not fetched yet", Toast.LENGTH_SHORT).show()
+            } catch (e: java.lang.Exception) {
+                withContext(Main) {
+                    Toast.makeText(this@Flashes, e.toString(), Toast.LENGTH_LONG).show()
+                }
             }
 
 
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
