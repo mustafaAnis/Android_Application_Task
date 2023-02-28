@@ -9,33 +9,36 @@ import android.widget.Adapter
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidapplicationtask.databinding.ActivityFlashesBinding
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import java.lang.Exception
 
 class Flashes : AppCompatActivity() {
+    lateinit var binding: ActivityFlashesBinding
     lateinit var mAdapter: FlashesRecyclerAdapter
     private var post = mutableListOf<Post>()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_flashes)
+        binding = ActivityFlashesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.my_toolbar))
-        val actionBar = getSupportActionBar()
+        setSupportActionBar(binding.myToolbar)
+        val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.back_button)
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setDisplayShowTitleEnabled(false)
         }
 
-        val flashesView = findViewById<RecyclerView>(R.id.flashesView)
+        //val flashesView = findViewById<RecyclerView>(R.id.flashesView)
 
         mAdapter = FlashesRecyclerAdapter(post, this)
-        flashesView.adapter = mAdapter
-        flashesView.layoutManager = LinearLayoutManager(this)
+        binding.flashesView.adapter = mAdapter
+        binding.flashesView.layoutManager = LinearLayoutManager(this)
 
 
         CoroutineScope(Main).launch {

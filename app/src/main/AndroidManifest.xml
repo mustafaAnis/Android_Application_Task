@@ -16,9 +16,6 @@
         android:theme="@style/Theme.AndroidApplicationTask"
         tools:targetApi="31">
         <activity
-            android:name=".appbar"
-            android:exported="false" />
-        <activity
             android:name=".Flashes"
             android:exported="false" />
         <activity
