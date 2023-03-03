@@ -8,16 +8,20 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidapplicationtask.databinding.ActivityAyaatListBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class AyaatList : AppCompatActivity(),OnItemClickListenerForAyaat {
+    lateinit var binding: ActivityAyaatListBinding
+
     @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ayaat_list)
+        binding = ActivityAyaatListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.my_toolbar))
+        setSupportActionBar(binding.myToolbar)
         val actionBar = getSupportActionBar()
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.back_button)
@@ -28,7 +32,7 @@ class AyaatList : AppCompatActivity(),OnItemClickListenerForAyaat {
 
         val ayaatObject = lists.getAyatList()
 
-        val ayaatView = findViewById<RecyclerView>(R.id.ayaatView)
+        val ayaatView = binding.ayaatView
 
         val adapter = AyaatRecyclerAdapter(ayaatObject,this,this)
         ayaatView.adapter = adapter

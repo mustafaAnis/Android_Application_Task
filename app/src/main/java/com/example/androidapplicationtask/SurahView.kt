@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidapplicationtask.databinding.ActivityQuranBinding
 
 class SurahView : AppCompatActivity() {
     lateinit var database: quranDb
+    lateinit var binding: ActivityQuranBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quran)
+        binding = ActivityQuranBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.my_toolbar))
+        setSupportActionBar(binding.myToolbar)
         val actionBar = getSupportActionBar()
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.back_button)
@@ -33,13 +36,9 @@ class SurahView : AppCompatActivity() {
 
 
 
-        val surahList = findViewById<RecyclerView>(R.id.surahList)
+        val surahList = binding.surahList
         surahList.adapter = SurahRecycleAdapter(surahObject,this)
         surahList.layoutManager = LinearLayoutManager(this)
-
-
-
-
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
