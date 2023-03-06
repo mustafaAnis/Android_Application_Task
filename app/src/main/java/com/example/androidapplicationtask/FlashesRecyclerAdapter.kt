@@ -22,7 +22,8 @@ class FlashesRecyclerAdapter(val flashes: List<Post>, val context: Context) :
     override fun onBindViewHolder(holder: FlahsesViewHolder, position: Int) {
 
 
-        Picasso.get().load(url + flashes[position].path).placeholder(R.drawable.baseline_downloading_24).into(holder.imgView)
+        Picasso.get().load(url + flashes[position].path)
+            .placeholder(R.drawable.baseline_downloading_24).into(holder.imgView)
     }
 
 
@@ -36,4 +37,3 @@ class FlashesRecyclerAdapter(val flashes: List<Post>, val context: Context) :
 
     }
 }
-

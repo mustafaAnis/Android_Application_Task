@@ -46,9 +46,7 @@ class Flashes : AppCompatActivity() {
             if (flashes.isNotEmpty()) {
                 post.clear()
                 post.addAll(flashes)
-                withContext(Main) {
-                    mAdapter.notifyDataSetChanged()
-                }
+                mAdapter.notifyDataSetChanged()
 
             } else {
                 Toast.makeText(this@Flashes, "Data is not available", Toast.LENGTH_SHORT).show()
@@ -57,7 +55,7 @@ class Flashes : AppCompatActivity() {
     }
 
     private suspend fun getFlashes(): MutableList<Post> = withContext(IO) {
-        var resultBody = mutableListOf<Post>()
+        val resultBody = mutableListOf<Post>()
         try {
 
 
@@ -67,7 +65,7 @@ class Flashes : AppCompatActivity() {
                 resultBody.addAll(resultbody.data.posts)
             }
         } catch (e: Exception) {
-
+            Log.d("RetroFit",e.toString())
         }
         return@withContext resultBody
 
