@@ -10,4 +10,19 @@ abstract class quranDb: RoomDatabase() {
 
     abstract fun qurandao() : QuranDao
 
+    companion object{
+        @Volatile
+        private var INSTANCE : quranDb? = null
+        fun getDatabase(context: Context):quranDb{
+            if (INSTANCE == null)
+            {
+                synchronized(this){
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,quranDb::class.java,"quranDb.db").createFromAsset("quranDb.db").build()
+                }
+            }
+            return INSTANCE!!
+        }
+    }
+
+
 }

@@ -22,7 +22,7 @@ private lateinit var navController: NavController
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        navController= findNavController(this,R.id.activity_main_nav_host_fragment)
+        navController= Navigation.findNavController(this,R.id.activity_main_nav_host_fragment)
         setupWithNavController(binding.bottomNavigationView,navController)
 
 

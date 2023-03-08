@@ -1,40 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".SurahView"
-    android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quran"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            style="@android:style/TextAppearance.Material.Headline"
-            android:textColor="@color/white"
-            />
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-<androidx.recyclerview.widget.RecyclerView
     android:id="@+id/surahList"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".SurahView">
 
 </androidx.recyclerview.widget.RecyclerView>
-
-</LinearLayout>
