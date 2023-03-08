@@ -5,15 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.androidapplicationtask.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
-
-    lateinit var binding: ActivitySplashScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        setContentView(R.layout.activity_splash_screen)
 
 
         val handler = Handler(Looper.getMainLooper())
