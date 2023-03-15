@@ -1,94 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_margin="10dp"
-    android:id="@+id/ayaatCard"
-    >
-    <LinearLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+<variable
+    name="AyaatModel"
+    type="com.example.androidapplicationtask.AyaatData" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginRight="10dp">
+        android:layout_margin="10dp"
+        android:id="@+id/ayaatCard">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="vertical"
+            android:layout_marginRight="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="left"
-                android:layout_weight="1"
-                >
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/solid_bookmark"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/bookmark"
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/flash"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/flashes"
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="left"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/solid_bookmark"                        android:layout_marginLeft="5dp"
+                        android:id="@+id/bookmark" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/flash"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/flashes" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@{@string/SurahAyahNo(AyaatModel.surat_id,AyaatModel.ayat_number)}"
+                        android:gravity="right"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        tools:ignore="RtlHardcoded"
+                        android:id="@+id/surahAyatNo" />
+                </LinearLayout>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="1.1"
-                android:gravity="right"
+                android:text="@{AyaatModel.arabic}"
+                android:textColor="#FF4CAF50"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/arabic"
+                android:fontFamily="@font/noorehuda" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{AyaatModel.translation_urdu}"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                tools:ignore="RtlHardcoded"
-                android:id="@+id/surahAyatNo"
-                />
-                </LinearLayout>
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/translation"
+                android:fontFamily="@font/alvi" />
+
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Arabic"
-            android:textColor="#FF4CAF50"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:id="@+id/arabic"
-            android:fontFamily="@font/noorehuda"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Arabic"
-            android:textColor="@color/black"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:id="@+id/translation"
-            android:fontFamily="@font/alvi"
-            />
-
-
-
-
-
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>
