@@ -3,9 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="position"
+            type="Integer" />
 <variable
-    name="AyaatModel"
+    name="ayaatModel"
     type="com.example.androidapplicationtask.AyaatData" />
+        
+        <variable
+            name="listener"
+            type="com.example.androidapplicationtask.OnItemClickListenerForAyaat" />
 
     </data>
 
@@ -37,12 +44,15 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/solid_bookmark"                        android:layout_marginLeft="5dp"
+                        android:onClick="@{()->listener.onItemClickBookmark(position,ayaatModel)}"
+                        android:src="@drawable/solid_bookmark"
+                        android:layout_marginLeft="5dp"
                         android:id="@+id/bookmark" />
 
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
+                        android:onClick="@{() -> listener.onItemClickFlash()}"
                         android:src="@drawable/flash"
                         android:layout_marginLeft="10dp"
                         android:id="@+id/flashes" />
@@ -58,8 +68,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{@string/SurahAyahNo(AyaatModel.surat_id,AyaatModel.ayat_number)}"
+                        android:text="@{@string/SurahAyahNo(ayaatModel.surat_id,ayaatModel.ayat_number)}"
                         android:gravity="right"
+                        tools:text="1.1"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="20sp"
@@ -72,7 +83,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{AyaatModel.arabic}"
+                android:text="@{ayaatModel.arabic}"
+                tools:text="Arabic"
                 android:textColor="#FF4CAF50"
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:id="@+id/arabic"
@@ -81,8 +93,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{AyaatModel.translation_urdu}"
+                android:text="@{ayaatModel.translation_urdu}"
                 android:textColor="@color/black"
+                tools:text="translation"
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:id="@+id/translation"
                 android:fontFamily="@font/alvi" />
