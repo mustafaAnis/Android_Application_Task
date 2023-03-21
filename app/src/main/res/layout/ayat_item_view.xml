@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="position"
             type="Integer" />
 <variable
-    name="ayaatModel"
+    name="model"
     type="com.example.androidapplicationtask.AyaatData" />
         
         <variable
@@ -44,8 +45,9 @@
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:onClick="@{()->listener.onItemClickBookmark(position,ayaatModel)}"
+                        android:onClick="@{()->listener.onItemClickBookmark(position,model)}"
                         android:src="@drawable/solid_bookmark"
+                        app:setBookmarkImage="@{model.is_bookmarked()}"
                         android:layout_marginLeft="5dp"
                         android:id="@+id/bookmark" />
 
@@ -68,7 +70,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@{@string/SurahAyahNo(ayaatModel.surat_id,ayaatModel.ayat_number)}"
+                        android:text="@{@string/SurahAyahNo(model.surat_id,model.ayat_number)}"
                         android:gravity="right"
                         tools:text="1.1"
                         android:textColor="@color/black"
@@ -83,7 +85,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{ayaatModel.arabic}"
+                android:text="@{model.arabic}"
                 tools:text="Arabic"
                 android:textColor="#FF4CAF50"
                 style="@style/TextAppearance.AppCompat.Headline"
@@ -93,7 +95,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{ayaatModel.translation_urdu}"
+                android:text="@{model.translation_urdu}"
                 android:textColor="@color/black"
                 tools:text="translation"
                 style="@style/TextAppearance.AppCompat.Headline"
