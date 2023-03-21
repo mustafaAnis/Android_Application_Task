@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapplicationtask.databinding.ActivityQuranBinding
 
 class SurahView : AppCompatActivity() {
-    lateinit var database: quranDb
     lateinit var binding: ActivityQuranBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

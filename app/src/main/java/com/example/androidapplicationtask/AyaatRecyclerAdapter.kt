@@ -29,12 +29,7 @@ class AyaatRecyclerAdapter(
 
         val model = ayaat[position]
         holder.bind(model)
-
-//        if (ayaat[position].is_bookmarked == 0) {
-//            holder.bookmark.setImageResource(R.drawable.holo_bookmark)
-//        } else {
-//            holder.bookmark.setImageResource(R.drawable.solid_bookmark)
-//        }
+        
     }
 
     override fun getItemCount(): Int {
