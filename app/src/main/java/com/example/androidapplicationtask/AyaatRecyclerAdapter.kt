@@ -17,8 +17,8 @@ class AyaatRecyclerAdapter(
     val listner: OnItemClickListenerForAyaat,
     val context: Context
 ) : RecyclerView.Adapter<AyaatRecyclerAdapter.AyaatViewHolder>() {
-    lateinit var database: quranDb
-    val ayatObject = lists.getAyatList()
+//    lateinit var database: quranDb
+//    val ayatObject = lists.getAyatList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AyaatViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return AyaatViewHolder(DataBindingUtil.inflate(inflater,R.layout.ayat_item_view, parent, false))

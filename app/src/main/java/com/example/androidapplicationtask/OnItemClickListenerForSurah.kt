@@ -2,6 +2,6 @@ package com.example.androidapplicationtask
 
 interface OnItemClickListenerForSurah {
 
-    fun onItemClickSurahCard()
+    fun onItemClickSurahCard(position: Int)
 
 }

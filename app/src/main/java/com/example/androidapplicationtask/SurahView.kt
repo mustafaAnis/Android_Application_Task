@@ -1,13 +1,15 @@
 package com.example.androidapplicationtask
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapplicationtask.databinding.ActivityQuranBinding
 
-class SurahView : AppCompatActivity() {
+class SurahView : AppCompatActivity(), OnItemClickListenerForSurah {
     lateinit var binding: ActivityQuranBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +38,7 @@ class SurahView : AppCompatActivity() {
 
 
         val surahList = binding.surahList
-        surahList.adapter = SurahRecycleAdapter(surahObject,this)
+        surahList.adapter = SurahRecycleAdapter(surahObject,this,this)
         surahList.layoutManager = LinearLayoutManager(this)
 
     }
@@ -48,5 +50,15 @@ class SurahView : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onItemClickSurahCard(position: Int) {
+        if(position == 0){
+            val intent = Intent(this,AyaatList::class.java)
+            this.startActivity(intent)
+        }
+        else{
+            Toast.makeText(this, "No Data Available ", Toast.LENGTH_SHORT).show()
+        }
     }
 }
