@@ -10,15 +10,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.androidapplicationtask.databinding.AyatItemViewBinding
 
 class AyaatRecyclerAdapter(
     val ayaat: List<AyaatData>,
     val listner: OnItemClickListenerForAyaat,
     val context: Context
-) : RecyclerView.Adapter<AyaatRecyclerAdapter.AyaatViewHolder>() {
-//    lateinit var database: quranDb
-//    val ayatObject = lists.getAyatList()
+) : Adapter<AyaatRecyclerAdapter.AyaatViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AyaatViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return AyaatViewHolder(DataBindingUtil.inflate(inflater,R.layout.ayat_item_view, parent, false))
