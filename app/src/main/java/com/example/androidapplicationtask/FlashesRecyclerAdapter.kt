@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidapplicationtask.databinding.FlashesListViewBinding
 import com.squareup.picasso.Picasso
 
 class FlashesRecyclerAdapter(val flashes: List<Post>, val context: Context) :
@@ -15,15 +17,12 @@ class FlashesRecyclerAdapter(val flashes: List<Post>, val context: Context) :
     var url = "https://islam360.app/islam360/posts/image/urdu/"
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlahsesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.flashes_list_view, parent, false)
-        return FlahsesViewHolder(view)
+        return FlahsesViewHolder(DataBindingUtil.inflate(inflater,R.layout.flashes_list_view, parent, false))
     }
 
     override fun onBindViewHolder(holder: FlahsesViewHolder, position: Int) {
-
-
-        Picasso.get().load(url + flashes[position].path)
-            .placeholder(R.drawable.baseline_downloading_24).into(holder.imgView)
+        val model = flashes[position]
+        holder.bind(model)
     }
 
 
@@ -32,8 +31,12 @@ class FlashesRecyclerAdapter(val flashes: List<Post>, val context: Context) :
     }
 
 
-    class FlahsesViewHolder(flashesView: View) : RecyclerView.ViewHolder(flashesView) {
-        var imgView = flashesView.findViewById<ImageView>(R.id.flashesImageView)
+    class FlahsesViewHolder(val binding: FlashesListViewBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(model: Post){
+            binding.model = model
+
+        }
 
     }
 }
