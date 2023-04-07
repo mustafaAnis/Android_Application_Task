@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapplicationtask.databinding.ActivityAyaatListBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

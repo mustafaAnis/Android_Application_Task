@@ -1,94 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_margin="10dp"
-    android:id="@+id/ayaatCard"
-    >
-    <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="position"
+            type="Integer" />
+<variable
+    name="model"
+    type="com.example.androidapplicationtask.AyaatData" />
+        
+        <variable
+            name="listener"
+            type="com.example.androidapplicationtask.OnItemClickListenerForAyaat" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginRight="10dp">
+        android:layout_margin="10dp"
+        android:id="@+id/ayaatCard">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="vertical"
+            android:layout_marginRight="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="left"
-                android:layout_weight="1"
-                >
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/solid_bookmark"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/bookmark"
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/flash"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/flashes"
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="left"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:onClick="@{()->listener.onItemClickBookmark(position,model)}"
+                        android:src="@drawable/solid_bookmark"
+                        app:setBookmarkImage="@{model.is_bookmarked()}"
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/bookmark" />
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:onClick="@{() -> listener.onItemClickFlash()}"
+                        android:src="@drawable/flash"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/flashes" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@{@string/SurahAyahNo(model.surat_id,model.ayat_number)}"
+                        android:gravity="right"
+                        tools:text="1.1"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        tools:ignore="RtlHardcoded"
+                        android:id="@+id/surahAyatNo" />
+                </LinearLayout>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="1.1"
-                android:gravity="right"
+                android:text="@{model.arabic}"
+                tools:text="Arabic"
+                android:textColor="#FF4CAF50"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/arabic"
+                android:fontFamily="@font/noorehuda" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{model.translation_urdu}"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                tools:ignore="RtlHardcoded"
-                android:id="@+id/surahAyatNo"
-                />
-                </LinearLayout>
+                tools:text="translation"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:id="@+id/translation"
+                android:fontFamily="@font/alvi" />
+
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Arabic"
-            android:textColor="#FF4CAF50"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:id="@+id/arabic"
-            android:fontFamily="@font/noorehuda"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Arabic"
-            android:textColor="@color/black"
-            style="@style/TextAppearance.AppCompat.Headline"
-            android:id="@+id/translation"
-            android:fontFamily="@font/alvi"
-            />
-
-
-
-
-
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>

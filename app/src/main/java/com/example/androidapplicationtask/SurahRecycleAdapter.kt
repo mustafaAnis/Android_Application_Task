@@ -2,40 +2,32 @@ package com.example.androidapplicationtask
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.androidapplicationtask.databinding.SurahItemViewBinding
 
-class SurahRecycleAdapter(val surah: List<Surah>, val context : Context ) : Adapter<SurahRecycleAdapter.MyViewHolder>() {
+class SurahRecycleAdapter(
+    val surah: List<Surah>,
+    val context : Context,
+    val onItemClickListener:OnItemClickListenerForSurah
+    ) : Adapter<SurahRecycleAdapter.MyViewHolder>() {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.surah_item_view, parent, false)
-        return MyViewHolder(view)
+        return MyViewHolder(DataBindingUtil.inflate(inflater,R.layout.surah_item_view, parent, false))
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.surahNo.text = surah[position].surahNo.toString()
-        holder.surahName.text = surah[position].surahName
-        holder.ayatNo.text = "Ayaat :" + surah[position].totalAyat.toString()
-        holder.surahCard.setOnClickListener(){
-            
-            if(position == 0){
-            val intent = Intent(context,AyaatList::class.java)
-            context.startActivity(intent)
-            }
-            else{
-                Toast.makeText(context, "No Data Available ", Toast.LENGTH_SHORT).show()
-            }
 
-        }
+        val model = surah[position]
+        holder.bind(model)
+
     }
 
 
@@ -43,12 +35,15 @@ class SurahRecycleAdapter(val surah: List<Surah>, val context : Context ) : Adap
         return surah.size
     }
 
-    class MyViewHolder(itemView: View) : ViewHolder(itemView) {
-        var surahCard = itemView.findViewById<CardView>(R.id.surahCard)
-        var surahNo = itemView.findViewById<TextView>(R.id.surahNo)
-        var surahName = itemView.findViewById<TextView>(R.id.surahName)
-        var ayatNo = itemView.findViewById<TextView>(R.id.ayatNo)
+    inner class MyViewHolder(val binding: SurahItemViewBinding) : ViewHolder(binding.root) {
 
+        fun bind(model:Surah) {
+
+            binding.model = model
+            binding.listner = onItemClickListener
+            binding.position = bindingAdapterPosition
+            binding.executePendingBindings()
+        }
     }
 }
 
