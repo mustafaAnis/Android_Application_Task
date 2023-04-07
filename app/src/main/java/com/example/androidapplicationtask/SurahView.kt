@@ -51,7 +51,7 @@ class SurahView : AppCompatActivity(), OnItemClickListenerForSurah {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onItemClickSurahCard(position: Int) {
+    override fun onClickSurah(position: Int) {
         if(position == 0){
             val intent = Intent(this,AyaatList::class.java)
             this.startActivity(intent)
