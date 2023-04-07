@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/flashesImageView"
                 android:src="@drawable/demoflash"
-                app:setFlashes="@{model}"
+                app:setFlashes="@{model.path}"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true" />
 

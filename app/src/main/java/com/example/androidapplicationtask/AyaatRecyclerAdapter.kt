@@ -2,21 +2,16 @@ package com.example.androidapplicationtask
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.renderscript.ScriptGroup.Binding
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.androidapplicationtask.databinding.AyatItemViewBinding
 
 class AyaatRecyclerAdapter(
     val ayaat: List<AyaatData>,
-    val listner: OnItemClickListenerForAyaat,
+    val onItemClickListener: OnItemClickListenerForAyaat,
     val context: Context
 ) : Adapter<AyaatRecyclerAdapter.AyaatViewHolder>() {
 
@@ -41,7 +36,7 @@ class AyaatRecyclerAdapter(
     inner class AyaatViewHolder(val binding : AyatItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(model : AyaatData){
             binding.model = model
-            binding.listener = listner
+            binding.listener = onItemClickListener
             binding.position = bindingAdapterPosition
             binding.executePendingBindings()
 

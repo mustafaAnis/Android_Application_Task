@@ -1,16 +1,11 @@
 package com.example.androidapplicationtask
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapplicationtask.databinding.FlashesListViewBinding
-import com.squareup.picasso.Picasso
 
 class FlashesRecyclerAdapter(val flashes: List<Post>, val context: Context) :
     RecyclerView.Adapter<FlashesRecyclerAdapter.FlahsesViewHolder>() {

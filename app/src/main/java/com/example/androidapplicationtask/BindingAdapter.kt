@@ -9,19 +9,19 @@ import com.squareup.picasso.Picasso
 fun ImageView.setBookmarkImage(flag: Int){
 
 
-        if (flag != 1) {
+        if (flag == 0) {
             this.setImageResource(R.drawable.holo_bookmark)
-        } else {
+        } else if (flag == 1) {
             this.setImageResource(R.drawable.solid_bookmark)
         }
 
 
 }
 @BindingAdapter("setFlashes")
-fun ImageView.setFlashes(flashes : Post){
+fun ImageView.setFlashes(path : String){
     val url = "https://islam360.app/islam360/posts/image/urdu/"
 
-    Picasso.get().load(url + flashes.path)
+    Picasso.get().load(url + path)
         .placeholder(R.drawable.baseline_downloading_24).into(this)
 
 
