@@ -26,21 +26,15 @@ class SurahView : AppCompatActivity(), OnItemClickListenerForSurah {
         }
 
 
-        viewModel.add_surah_name(Surah(1,"Al-Fatihah",7))
-        viewModel.add_surah_name(Surah(2,"Al-Bakarah",286))
-        viewModel.add_surah_name(Surah(3,"Aali'imran",200))
-        viewModel.add_surah_name(Surah(4,"An-Nisa",176))
-        viewModel.add_surah_name(Surah(5,"Al-Ma'idah",120))
-        viewModel.add_surah_name(Surah(6,"Al-An'am",165))
-        viewModel.add_surah_name(Surah(7,"Al-Aeraaf",206))
-        viewModel.add_surah_name(Surah(8,"Al-Anfaal",75))
+
 
 
 
         val surahList = binding.surahList
-        surahList.adapter = SurahRecycleAdapter(viewModel.surahObject,this,this)
-        surahList.layoutManager = LinearLayoutManager(this)
-
+        viewModel.surahObject.observe(this) {
+            surahList.adapter = SurahRecycleAdapter(it, this, this)
+            surahList.layoutManager = LinearLayoutManager(this)
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

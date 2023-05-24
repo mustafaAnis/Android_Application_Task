@@ -29,7 +29,7 @@ class AyaatList : AppCompatActivity(),OnItemClickListenerForAyaat {
         }
 
 
-        val ayaatObject = lists.getAyatList()
+        val ayaatObject = QuranRepo.getAyatList()
 
         val ayaatView = binding.ayaatView
 
