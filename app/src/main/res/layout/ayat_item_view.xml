@@ -9,11 +9,11 @@
             type="Integer" />
 <variable
     name="model"
-    type="com.example.androidapplicationtask.AyaatData" />
+    type="com.example.androidapplicationtask.model.AyaatData" />
         
         <variable
             name="listener"
-            type="com.example.androidapplicationtask.OnItemClickListenerForAyaat" />
+            type="com.example.androidapplicationtask.listeners.OnItemClickListenerForAyaat" />
 
     </data>
 

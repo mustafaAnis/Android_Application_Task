@@ -5,10 +5,10 @@
     <data>
         <variable
             name="listner"
-            type="com.example.androidapplicationtask.OnItemClickListenerForSurah" />
+            type="com.example.androidapplicationtask.listeners.OnItemClickListenerForSurah" />
 <variable
     name="model"
-    type="com.example.androidapplicationtask.Surah" />
+    type="com.example.androidapplicationtask.model.Surah" />
 
         <variable
             name="position"
