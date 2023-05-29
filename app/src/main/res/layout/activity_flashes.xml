@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Flashes"
+    tools:context=".view.FlashesView"
     android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
